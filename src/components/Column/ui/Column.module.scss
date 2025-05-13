@@ -1,0 +1,94 @@
+@use "../../../shared/style/colors" as c;
+
+.Column {
+  background: c.$black;
+  width: 350px;
+  padding: 25px;
+  border-radius: 15px;
+  border: 2px solid c.$black;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &:hover {
+    border-color: c.$gray;
+  }
+}
+
+.Head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Name {
+  font-size: 20px;
+  color: c.$gray-light;
+  font-weight: 500;
+}
+
+.Controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Button {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  color: c.$gray-light;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$gray;
+  }
+
+  &:active {
+    background: c.$black;
+  }
+}
+
+.Container {
+  height: 75vh;
+  border-left: 2px solid c.$gray;
+  border-right: 2px solid c.$gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: c.$gray c.$black;
+}
+
+.Add {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  color: c.$gray-light;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$gray;
+  }
+
+  &:active {
+    background: c.$black;
+  }
+}
+
+.Empty {
+  font-size: 16px;
+  color: c.$gray-light;
+  font-weight: 400;
+}

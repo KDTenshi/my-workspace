@@ -1,0 +1,23 @@
+.Board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.Button {
+  background: #2e2e2e;
+  border: 2px solid #494949;
+  color: #b0b0b0;
+  padding: 25px 50px;
+  border-radius: 15px;
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.Button:hover {
+  background: #494949;
+}
+.Button:active {
+  background: #1a1a1a;
+}/*# sourceMappingURL=Board.module.css.map */

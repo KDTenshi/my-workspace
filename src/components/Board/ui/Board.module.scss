@@ -1,0 +1,27 @@
+@use "../../../shared/style/colors" as c;
+
+.Board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.Button {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  color: c.$gray-light;
+  padding: 25px 50px;
+  border-radius: 15px;
+  font-size: 25px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$gray;
+  }
+
+  &:active {
+    background: c.$black;
+  }
+}

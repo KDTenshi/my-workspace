@@ -1,0 +1,47 @@
+@use "../../../shared/style/colors" as c;
+
+.Task {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  padding: 25px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 250px;
+
+  &:hover {
+    box-shadow: 0 0 10px c.$gray;
+  }
+}
+
+.Name {
+  font-size: 16px;
+  color: c.$gray-light;
+  font-weight: 400;
+}
+
+.Controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Button {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  color: c.$gray-light;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$gray;
+  }
+
+  &:active {
+    background: c.$black;
+  }
+}

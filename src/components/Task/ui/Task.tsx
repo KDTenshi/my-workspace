@@ -4,6 +4,7 @@ import style from "./Task.module.css";
 import type { TTask } from "../../../shared/types/types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { DeleteIcon, EditIcon } from "../../../shared/icons";
 
 interface TaskProps {
   task: TTask;
@@ -24,8 +25,12 @@ const Task: FC<TaskProps> = ({ task }) => {
     <div className={style.Task} {...attributes} {...listeners} ref={setNodeRef} style={draggingStyle}>
       <p className={style.Name}>{task.name}</p>
       <div className={style.Controls}>
-        <button className={style.Button}>edit</button>
-        <button className={style.Button}>delete</button>
+        <button className={style.Button}>
+          <EditIcon />
+        </button>
+        <button className={style.Button}>
+          <DeleteIcon />
+        </button>
       </div>
     </div>
   );

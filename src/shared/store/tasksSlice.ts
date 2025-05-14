@@ -52,7 +52,30 @@ export const tasksSlice = createSlice({
 
       column.tasks = arrayMove(column.tasks, activeIndex, overIndex);
     },
+    renameColumn: (state, action: PayloadAction<{ id: string; name: string }>) => {
+      const { id, name } = action.payload;
+
+      const column = state.columns.find((column) => column.id === id);
+
+      if (!column) return;
+
+      column.name = name;
+    },
+    renameTask: (state, action: PayloadAction<{ id: string; name: string }>) => {
+      const { id, name } = action.payload;
+
+      const column = state.columns.find((column) => column.tasks.some((task) => task.id === id));
+
+      if (!column) return;
+
+      const task = column.tasks.find((task) => task.id === id);
+
+      if (!task) return;
+
+      task.name = name;
+    },
   },
 });
 
-export const { changeColumnPosition, changeTaskColumn, changeTaskPosition } = tasksSlice.actions;
+export const { changeColumnPosition, changeTaskColumn, changeTaskPosition, renameColumn, renameTask } =
+  tasksSlice.actions;

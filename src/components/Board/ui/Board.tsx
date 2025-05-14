@@ -3,7 +3,16 @@ import { useState, type FC } from "react";
 import style from "./Board.module.css";
 import { useAppDispatch, useAppSelector } from "../../../app/store/appStore";
 import { Column } from "../../Column";
-import { DndContext, DragOverlay, pointerWithin, type DragOverEvent, type DragStartEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragOverlay,
+  MouseSensor,
+  pointerWithin,
+  useSensor,
+  useSensors,
+  type DragOverEvent,
+  type DragStartEvent,
+} from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import type { TColumn, TTask } from "../../../shared/types/types";
 import { Task } from "../../Task";
@@ -15,6 +24,10 @@ const Board: FC = () => {
   const dispatch = useAppDispatch();
 
   const [draggingItem, setDraggingItem] = useState<{ item: TTask | TColumn; type: "column" | "task" } | null>(null);
+
+  const mouseSensor = useSensor(MouseSensor, { activationConstraint: { distance: 10 } });
+
+  const sensors = useSensors(mouseSensor);
 
   const handleDragStart = (e: DragStartEvent) => {
     const { active } = e;
@@ -90,7 +103,12 @@ const Board: FC = () => {
 
   return (
     <div className={style.Board}>
-      <DndContext onDragStart={handleDragStart} onDragOver={handleDragOver} collisionDetection={pointerWithin}>
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        collisionDetection={pointerWithin}
+        sensors={sensors}
+      >
         <SortableContext items={columns}>
           {columns.map((column) => (
             <Column key={column.id} column={column} />

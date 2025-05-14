@@ -36,21 +36,7 @@
 }
 
 .Button {
-  background: c.$gray-dark;
-  border: 2px solid c.$gray;
-  color: c.$gray-light;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-
-  &:hover {
-    background: c.$gray;
-  }
-
-  &:active {
-    background: c.$black;
-  }
+  width: 100%;
 }
 
 .Container {
@@ -66,25 +52,6 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: c.$gray c.$black;
-}
-
-.Add {
-  background: c.$gray-dark;
-  border: 2px solid c.$gray;
-  color: c.$gray-light;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 100%;
-  cursor: pointer;
-
-  &:hover {
-    background: c.$gray;
-  }
-
-  &:active {
-    background: c.$black;
-  }
 }
 
 .Empty {

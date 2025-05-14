@@ -1,0 +1,47 @@
+.Small {
+  background: #2e2e2e;
+  border: 2px solid #494949;
+  color: #b0b0b0;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.Small:hover {
+  background: #494949;
+}
+.Small:active {
+  background: #1a1a1a;
+}
+
+.Medium {
+  background: #2e2e2e;
+  border: 2px solid #494949;
+  color: #b0b0b0;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.Medium:hover {
+  background: #494949;
+}
+.Medium:active {
+  background: #1a1a1a;
+}
+
+.Large {
+  background: #2e2e2e;
+  border: 2px solid #494949;
+  color: #b0b0b0;
+  cursor: pointer;
+  padding: 25px 50px;
+  border-radius: 15px;
+  font-size: 25px;
+}
+.Large:hover {
+  background: #494949;
+}
+.Large:active {
+  background: #1a1a1a;
+}/*# sourceMappingURL=Button.module.css.map */

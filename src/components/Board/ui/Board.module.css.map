@@ -1,1 +1,1 @@
-{"version":3,"sources":["Board.module.scss","Board.module.css","../../../shared/style/_colors.scss"],"names":[],"mappings":"AAEA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,SAAA;ACDF;;ADIA;EACE,mBETU;EFUV,yBAAA;EACA,cETW;EFUX,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,gBAAA;EACA,eAAA;ACDF;ADGE;EACE,mBElBG;ADiBP;ADIE;EACE,mBExBI;ADsBR","file":"Board.module.css"}
+{"version":3,"sources":["Board.module.scss","Board.module.css"],"names":[],"mappings":"AAEA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;EACA,SAAA;ACDF","file":"Board.module.css"}

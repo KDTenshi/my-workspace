@@ -5,6 +5,7 @@ import type { TColumn } from "../../../shared/types/types";
 import { Task } from "../../Task";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { AddIcon, DeleteIcon, DragIcon } from "../../../shared/icons";
 
 interface ColumnProps {
   column: TColumn;
@@ -27,13 +28,17 @@ const Column: FC<ColumnProps> = ({ column }) => {
         <p className={style.Name}>{column.name}</p>
         <div className={style.Controls}>
           <button className={style.Button} {...attributes} {...listeners}>
-            drag
+            <DragIcon />
           </button>
-          <button className={style.Button}>delete</button>
+          <button className={style.Button}>
+            <DeleteIcon />
+          </button>
         </div>
       </div>
       <div className={style.Container} ref={setDroppableNodeRef}>
-        <button className={style.Add}>Add task</button>
+        <button className={style.Add}>
+          Add task <AddIcon />
+        </button>
         {column.tasks.length === 0 && <p className={style.Empty}>No tasks here</p>}
         <SortableContext items={column.tasks}>
           {column.tasks.map((task) => (

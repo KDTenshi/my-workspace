@@ -33,19 +33,7 @@
 }
 
 .Button {
-  background: #2e2e2e;
-  border: 2px solid #494949;
-  color: #b0b0b0;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-.Button:hover {
-  background: #494949;
-}
-.Button:active {
-  background: #1a1a1a;
+  width: 100%;
 }
 
 .Container {
@@ -61,23 +49,6 @@
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #494949 #1a1a1a;
-}
-
-.Add {
-  background: #2e2e2e;
-  border: 2px solid #494949;
-  color: #b0b0b0;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 100%;
-  cursor: pointer;
-}
-.Add:hover {
-  background: #494949;
-}
-.Add:active {
-  background: #1a1a1a;
 }
 
 .Empty {

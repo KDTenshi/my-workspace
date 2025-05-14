@@ -1,0 +1,40 @@
+@use "../../style/colors" as c;
+
+@mixin Button {
+  background: c.$gray-dark;
+  border: 2px solid c.$gray;
+  color: c.$gray-light;
+  cursor: pointer;
+
+  &:hover {
+    background: c.$gray;
+  }
+
+  &:active {
+    background: c.$black;
+  }
+}
+
+.Small {
+  @include Button();
+
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.Medium {
+  @include Button();
+
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.Large {
+  @include Button();
+
+  padding: 25px 50px;
+  border-radius: 15px;
+  font-size: 25px;
+}

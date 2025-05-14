@@ -27,21 +27,3 @@
   flex-direction: column;
   gap: 10px;
 }
-
-.Button {
-  background: c.$gray-dark;
-  border: 2px solid c.$gray;
-  color: c.$gray-light;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-
-  &:hover {
-    background: c.$gray;
-  }
-
-  &:active {
-    background: c.$black;
-  }
-}

@@ -8,7 +8,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 import type { TColumn, TTask } from "../../../shared/types/types";
 import { Task } from "../../Task";
 import { changeColumnPosition, changeTaskColumn, changeTaskPosition } from "../../../shared/store/tasksSlice";
-import { AddIcon } from "../../../shared/icons";
+import { Button } from "../../../shared/ui";
 
 const Board: FC = () => {
   const columns = useAppSelector((state) => state.tasks.columns);
@@ -98,9 +98,7 @@ const Board: FC = () => {
         </SortableContext>
         <DragOverlay>{renderDragOverlay()}</DragOverlay>
       </DndContext>
-      <button className={style.Button}>
-        Add column <AddIcon />
-      </button>
+      <Button size={"large"}>Add column</Button>
     </div>
   );
 };

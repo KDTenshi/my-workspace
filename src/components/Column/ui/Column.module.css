@@ -55,4 +55,21 @@
   font-size: 16px;
   color: #b0b0b0;
   font-weight: 400;
+}
+
+.Form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Input {
+  background: #1a1a1a;
+  border: 2px solid #494949;
+  outline: 0;
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-size: 20px;
+  color: #b0b0b0;
+  font-weight: 500;
 }/*# sourceMappingURL=Column.module.css.map */

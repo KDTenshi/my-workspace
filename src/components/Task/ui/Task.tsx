@@ -7,7 +7,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { DeleteIcon, EditIcon } from "../../../shared/icons";
 import { Button } from "../../../shared/ui";
 import { useAppDispatch } from "../../../app/store/appStore";
-import { renameTask } from "../../../shared/store/tasksSlice";
+import { deleteTask, renameTask } from "../../../shared/store/tasksSlice";
 
 interface TaskProps {
   task: TTask;
@@ -84,7 +84,7 @@ const Task: FC<TaskProps> = ({ task }) => {
             <Button size={"small"} onClick={() => setIsEdit(true)}>
               <EditIcon />
             </Button>
-            <Button size={"small"}>
+            <Button size={"small"} onClick={() => dispatch(deleteTask({ id: task.id }))}>
               <DeleteIcon />
             </Button>
           </div>

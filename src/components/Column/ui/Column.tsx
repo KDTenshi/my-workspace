@@ -8,7 +8,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { DeleteIcon, DragIcon } from "../../../shared/icons";
 import { Button } from "../../../shared/ui";
 import { useAppDispatch } from "../../../app/store/appStore";
-import { renameColumn } from "../../../shared/store/tasksSlice";
+import { deletecolumn, renameColumn } from "../../../shared/store/tasksSlice";
 import { AddTask } from "../../AddTask";
 
 interface ColumnProps {
@@ -88,7 +88,7 @@ const Column: FC<ColumnProps> = ({ column }) => {
             <Button {...attributes} {...listeners} size={"small"}>
               <DragIcon />
             </Button>
-            <Button size={"small"}>
+            <Button size={"small"} onClick={() => dispatch(deletecolumn({ id: column.id }))}>
               <DeleteIcon />
             </Button>
           </div>

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { TColumn } from "../types/types";
+import type { TColumn, TTask } from "../types/types";
 import { arrayMove } from "@dnd-kit/sortable";
 
 type TasksState = {
@@ -74,8 +74,41 @@ export const tasksSlice = createSlice({
 
       task.name = name;
     },
+    addTask: (state, action: PayloadAction<{ columnId: string; name: string }>) => {
+      const { columnId, name } = action.payload;
+
+      const column = state.columns.find((column) => column.id === columnId);
+
+      if (!column) return;
+
+      const newTask: TTask = {
+        id: `${Date.now()}`,
+        name,
+        date: Date.now(),
+      };
+
+      column.tasks.push(newTask);
+    },
+    addColumn: (state, action: PayloadAction<{ name: string }>) => {
+      const { name } = action.payload;
+
+      const newColumn: TColumn = {
+        id: `${Date.now()}`,
+        name,
+        tasks: [],
+      };
+
+      state.columns.push(newColumn);
+    },
   },
 });
 
-export const { changeColumnPosition, changeTaskColumn, changeTaskPosition, renameColumn, renameTask } =
-  tasksSlice.actions;
+export const {
+  changeColumnPosition,
+  changeTaskColumn,
+  changeTaskPosition,
+  renameColumn,
+  renameTask,
+  addTask,
+  addColumn,
+} = tasksSlice.actions;

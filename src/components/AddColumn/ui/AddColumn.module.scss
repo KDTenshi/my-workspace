@@ -1,0 +1,33 @@
+@use "../../../shared/style/colors" as c;
+
+.Add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Form {
+  border: 2px solid c.$gray;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 25px;
+  width: 350px;
+  border-radius: 15px;
+}
+
+.Input {
+  width: 100%;
+  background: c.$black;
+  border: 2px solid c.$gray;
+  outline: 0;
+  font-size: 20px;
+  color: c.$gray-light;
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.Expander {
+  height: 75vh;
+}

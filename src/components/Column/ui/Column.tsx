@@ -9,6 +9,7 @@ import { DeleteIcon, DragIcon } from "../../../shared/icons";
 import { Button } from "../../../shared/ui";
 import { useAppDispatch } from "../../../app/store/appStore";
 import { renameColumn } from "../../../shared/store/tasksSlice";
+import { AddTask } from "../../AddTask";
 
 interface ColumnProps {
   column: TColumn;
@@ -94,7 +95,7 @@ const Column: FC<ColumnProps> = ({ column }) => {
         </div>
       )}
       <div className={style.Container} ref={setDroppableNodeRef}>
-        <Button className={style.Button}>Add task</Button>
+        <AddTask columnId={column.id} />
         {column.tasks.length === 0 && <p className={style.Empty}>No tasks here</p>}
         <SortableContext items={column.tasks}>
           {column.tasks.map((task) => (

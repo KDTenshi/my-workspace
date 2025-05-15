@@ -17,7 +17,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 import type { TColumn, TTask } from "../../../shared/types/types";
 import { Task } from "../../Task";
 import { changeColumnPosition, changeTaskColumn, changeTaskPosition } from "../../../shared/store/tasksSlice";
-import { Button } from "../../../shared/ui";
+import { AddColumn } from "../../AddColumn";
 
 const Board: FC = () => {
   const columns = useAppSelector((state) => state.tasks.columns);
@@ -116,7 +116,7 @@ const Board: FC = () => {
         </SortableContext>
         <DragOverlay>{renderDragOverlay()}</DragOverlay>
       </DndContext>
-      <Button size={"large"}>Add column</Button>
+      <AddColumn />
     </div>
   );
 };

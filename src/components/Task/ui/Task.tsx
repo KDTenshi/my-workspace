@@ -29,7 +29,7 @@ const Task: FC<TaskProps> = ({ task }) => {
     opacity: isDragging ? 0.5 : 1,
   };
 
-  const handleBlur = () => {
+  const handleTaskRename = () => {
     const name = editValue.trim();
 
     if (!name) return;
@@ -47,20 +47,7 @@ const Task: FC<TaskProps> = ({ task }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const name = editValue.trim();
-
-    if (!name) return;
-
-    if (name !== task.name) {
-      dispatch(renameTask({ id: task.id, name }));
-
-      setIsEdit(false);
-      setEditValue(name);
-    } else {
-      setIsEdit(false);
-      setEditValue(task.name);
-    }
+    handleTaskRename();
   };
 
   return (
@@ -72,7 +59,7 @@ const Task: FC<TaskProps> = ({ task }) => {
             className={style.Input}
             value={editValue}
             onChange={(e) => setEditValue(e.target.value)}
-            onBlur={handleBlur}
+            onBlur={handleTaskRename}
             autoFocus
           />
         </form>

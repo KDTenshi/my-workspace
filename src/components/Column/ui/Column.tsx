@@ -5,7 +5,7 @@ import type { TColumn } from "../../../shared/types/types";
 import { Task } from "../../Task";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { DeleteIcon, DragIcon } from "../../../shared/icons";
+import { DeleteIcon, DragIcon, EditIcon } from "../../../shared/icons";
 import { Button } from "../../../shared/ui";
 import { useAppDispatch } from "../../../app/store/appStore";
 import { deletecolumn, renameColumn } from "../../../shared/store/tasksSlice";
@@ -21,7 +21,7 @@ const Column: FC<ColumnProps> = ({ column }) => {
 
   const dispatch = useAppDispatch();
 
-  const handleBlur = () => {
+  const handleColumnRename = () => {
     const name = editValue.trim();
 
     if (!name) return;
@@ -40,19 +40,7 @@ const Column: FC<ColumnProps> = ({ column }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const name = editValue.trim();
-
-    if (!name) return;
-
-    if (name !== column.name) {
-      dispatch(renameColumn({ id: column.id, name }));
-
-      setIsEdit(false);
-      setEditValue(name);
-    } else {
-      setIsEdit(false);
-      setEditValue(column.name);
-    }
+    handleColumnRename();
   };
 
   const { attributes, listeners, setNodeRef, setDroppableNodeRef, transform, isDragging } = useSortable({
@@ -75,18 +63,19 @@ const Column: FC<ColumnProps> = ({ column }) => {
             value={editValue}
             autoFocus
             onChange={(e) => setEditValue(e.target.value)}
-            onBlur={handleBlur}
+            onBlur={handleColumnRename}
           />
         </form>
       )}
       {!isEdit && (
         <div className={style.Head}>
-          <p className={style.Name} onClick={() => setIsEdit(true)}>
-            {column.name}
-          </p>
+          <p className={style.Name}>{column.name}</p>
           <div className={style.Controls}>
             <Button {...attributes} {...listeners} size={"small"}>
               <DragIcon />
+            </Button>
+            <Button size={"small"} onClick={() => setIsEdit(true)}>
+              <EditIcon />
             </Button>
             <Button size={"small"} onClick={() => dispatch(deletecolumn({ id: column.id }))}>
               <DeleteIcon />

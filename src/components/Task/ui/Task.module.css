@@ -18,6 +18,7 @@
   font-size: 16px;
   color: #b0b0b0;
   font-weight: 400;
+  overflow-wrap: anywhere;
 }
 
 .Controls {

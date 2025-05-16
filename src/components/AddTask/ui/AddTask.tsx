@@ -15,24 +15,26 @@ const AddTask: FC<AddTaskProps> = ({ columnId }) => {
 
   const dispatch = useAppDispatch();
 
-  const handleBlur = () => {
+  const handleTaskAdd = () => {
     const name = value.trim();
 
     if (name) dispatch(addTask({ columnId, name }));
+  };
 
+  const cancelAdd = () => {
     setIsAdd(false);
     setValue("");
   };
 
+  const handleBlur = () => {
+    handleTaskAdd();
+    cancelAdd();
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const name = value.trim();
-
-    if (name) dispatch(addTask({ columnId, name }));
-
-    setIsAdd(false);
-    setValue("");
+    handleTaskAdd();
+    cancelAdd();
   };
 
   return (

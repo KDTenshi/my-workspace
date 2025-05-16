@@ -11,24 +11,26 @@ const AddColumn: FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleBlur = () => {
+  const handleColumnAdd = () => {
     const name = value.trim();
 
     if (name) dispatch(addColumn({ name }));
+  };
 
+  const cancelAdd = () => {
     setIsAdd(false);
     setValue("");
   };
 
+  const handleBlur = () => {
+    handleColumnAdd();
+    cancelAdd();
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const name = value.trim();
-
-    if (name) dispatch(addColumn({ name }));
-
-    setIsAdd(false);
-    setValue("");
+    handleColumnAdd();
+    cancelAdd();
   };
 
   return (

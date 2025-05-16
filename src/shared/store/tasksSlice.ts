@@ -1,6 +1,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { TColumn, TTask } from "../types/types";
 import { arrayMove } from "@dnd-kit/sortable";
+import { findTaskInColumn } from "../utils/findTaskInColumn";
+import { findColumnByTaskId } from "../utils/findColumnByTaskId";
+import { findColumnById } from "../utils/findColumnById";
+import { findColumnIndex } from "../utils/findColumnIndex";
+import { findTaskIndex } from "../utils/findTaskIndex";
 
 type TasksState = {
   columns: TColumn[];
@@ -20,20 +25,20 @@ export const tasksSlice = createSlice({
     changeColumnPosition: (state, action: PayloadAction<{ activeId: string; overId: string }>) => {
       const { activeId, overId } = action.payload;
 
-      const activeIndex = state.columns.findIndex((column) => column.id === activeId);
-      const overIndex = state.columns.findIndex((column) => column.id === overId);
+      const activeIndex = findColumnIndex({ columnId: activeId, columns: state.columns });
+      const overIndex = findColumnIndex({ columnId: overId, columns: state.columns });
 
       state.columns = arrayMove(state.columns, activeIndex, overIndex);
     },
     changeTaskColumn: (state, action: PayloadAction<{ activeId: string; overId: string }>) => {
       const { activeId, overId } = action.payload;
 
-      const activeColumn = state.columns.find((column) => column.tasks.some((task) => task.id === activeId));
-      const overColumn = state.columns.find((column) => column.id === overId);
+      const activeColumn = findColumnByTaskId({ columns: state.columns, taskId: activeId });
+      const overColumn = findColumnById({ columns: state.columns, columnId: overId });
 
       if (!activeColumn || !overColumn) return;
 
-      const task = activeColumn.tasks.find((task) => task.id === activeId);
+      const task = findTaskInColumn({ column: activeColumn, taskId: activeId });
 
       if (!task) return;
 
@@ -43,19 +48,19 @@ export const tasksSlice = createSlice({
     changeTaskPosition: (state, action: PayloadAction<{ activeId: string; overId: string }>) => {
       const { activeId, overId } = action.payload;
 
-      const column = state.columns.find((column) => column.tasks.some((task) => task.id === activeId));
+      const column = findColumnByTaskId({ columns: state.columns, taskId: activeId });
 
       if (!column) return;
 
-      const activeIndex = column.tasks.findIndex((task) => task.id === activeId);
-      const overIndex = column.tasks.findIndex((task) => task.id === overId);
+      const activeIndex = findTaskIndex({ taskId: activeId, tasks: column.tasks });
+      const overIndex = findTaskIndex({ taskId: overId, tasks: column.tasks });
 
       column.tasks = arrayMove(column.tasks, activeIndex, overIndex);
     },
     renameColumn: (state, action: PayloadAction<{ id: string; name: string }>) => {
       const { id, name } = action.payload;
 
-      const column = state.columns.find((column) => column.id === id);
+      const column = findColumnById({ columns: state.columns, columnId: id });
 
       if (!column) return;
 
@@ -64,11 +69,11 @@ export const tasksSlice = createSlice({
     renameTask: (state, action: PayloadAction<{ id: string; name: string }>) => {
       const { id, name } = action.payload;
 
-      const column = state.columns.find((column) => column.tasks.some((task) => task.id === id));
+      const column = findColumnByTaskId({ columns: state.columns, taskId: id });
 
       if (!column) return;
 
-      const task = column.tasks.find((task) => task.id === id);
+      const task = findTaskInColumn({ column, taskId: id });
 
       if (!task) return;
 
@@ -77,7 +82,7 @@ export const tasksSlice = createSlice({
     addTask: (state, action: PayloadAction<{ columnId: string; name: string }>) => {
       const { columnId, name } = action.payload;
 
-      const column = state.columns.find((column) => column.id === columnId);
+      const column = findColumnById({ columns: state.columns, columnId });
 
       if (!column) return;
 
@@ -103,7 +108,7 @@ export const tasksSlice = createSlice({
     deleteTask: (state, action: PayloadAction<{ id: string }>) => {
       const { id } = action.payload;
 
-      const column = state.columns.find((column) => column.tasks.some((task) => task.id === id));
+      const column = findColumnByTaskId({ columns: state.columns, taskId: id });
 
       if (!column) return;
 

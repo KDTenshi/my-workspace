@@ -1,0 +1,16 @@
+@use "../../../shared/style/colors" as c;
+
+.Edit {
+  width: 100%;
+  min-height: 100%;
+  font-size: 16px;
+  color: c.$gray-light;
+  font-weight: 400;
+  padding: 10px 15px;
+  background: c.$gray-dark;
+  border-radius: 5px;
+  border: 2px solid c.$gray;
+  resize: none;
+  outline: 0;
+  scrollbar-width: thin;
+}

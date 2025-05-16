@@ -3,14 +3,14 @@
 .Task {
   background: c.$gray-dark;
   border: 2px solid c.$gray;
-  padding: 25px 15px;
+  padding: 20px 15px;
   border-radius: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   gap: 15px;
   width: 250px;
-  height: 150px;
+  min-height: 125px;
 
   &:hover {
     box-shadow: 0 0 10px c.$gray;
@@ -26,25 +26,7 @@
 
 .Controls {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.Form {
-  width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.Input {
-  width: 100%;
-  font-size: 16px;
-  color: c.$gray-light;
-  font-weight: 400;
-  padding: 10px 15px;
-  background: c.$gray-dark;
-  border-radius: 5px;
-  border: 2px solid c.$gray;
-  outline: 0;
+  justify-content: flex-end;
+  gap: 10px;
 }

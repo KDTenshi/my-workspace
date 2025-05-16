@@ -1,0 +1,14 @@
+.Edit {
+  width: 100%;
+  min-height: 100%;
+  font-size: 16px;
+  color: #b0b0b0;
+  font-weight: 400;
+  padding: 10px 15px;
+  background: #2e2e2e;
+  border-radius: 5px;
+  border: 2px solid #494949;
+  resize: none;
+  outline: 0;
+  scrollbar-width: thin;
+}/*# sourceMappingURL=EditTask.module.css.map */

@@ -7,7 +7,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { DeleteIcon, EditIcon } from "../../../shared/icons";
 import { Button } from "../../../shared/ui";
 import { useAppDispatch } from "../../../app/store/appStore";
-import { deleteTask, renameTask } from "../../../shared/store/tasksSlice";
+import { deleteTask } from "../../../shared/store/tasksSlice";
+import { EditTask } from "../../EditTask";
 
 interface TaskProps {
   task: TTask;
@@ -15,7 +16,6 @@ interface TaskProps {
 
 const Task: FC<TaskProps> = ({ task }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const [editValue, setEditValue] = useState(task.name);
 
   const dispatch = useAppDispatch();
 
@@ -29,41 +29,9 @@ const Task: FC<TaskProps> = ({ task }) => {
     opacity: isDragging ? 0.5 : 1,
   };
 
-  const handleTaskRename = () => {
-    const name = editValue.trim();
-
-    if (!name) return;
-
-    if (name !== task.name) {
-      dispatch(renameTask({ id: task.id, name }));
-
-      setIsEdit(false);
-      setEditValue(name);
-    } else {
-      setIsEdit(false);
-      setEditValue(task.name);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    handleTaskRename();
-  };
-
   return (
     <div className={style.Task} {...attributes} {...listeners} ref={setNodeRef} style={draggingStyle}>
-      {isEdit && (
-        <form className={style.Form} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className={style.Input}
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            onBlur={handleTaskRename}
-            autoFocus
-          />
-        </form>
-      )}
+      {isEdit && <EditTask task={task} setIsEdit={setIsEdit} />}
       {!isEdit && (
         <>
           <p className={style.Name}>{task.name}</p>
